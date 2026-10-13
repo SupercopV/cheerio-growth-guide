@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Solution Document (Private/Local)
+cheerio_solution_document.md
