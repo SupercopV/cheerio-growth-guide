@@ -37,19 +37,19 @@ export const GrowthScoreCard: React.FC = () => {
   const isReviewActive = recommendations.find(r => r.id === 'rec_post_purchase_review')?.status === 'active';
 
   return (
-    <div className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col justify-between">
+    <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-6 shadow-xs flex flex-col justify-between">
       <div>
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center">
+        <div className="flex items-center justify-between mb-4 gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0">
               <Award className="w-4 h-4" />
             </div>
-            <div>
-              <h3 className="text-sm font-bold text-slate-900 leading-tight">Growth Readiness Score</h3>
-              <p className="text-[11px] text-slate-500">Live demo progress tracker</p>
+            <div className="min-w-0">
+              <h3 className="text-sm font-bold text-slate-900 leading-tight truncate">Growth Readiness Score</h3>
+              <p className="text-[11px] text-slate-500 truncate">Live demo progress tracker</p>
             </div>
           </div>
-          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${level.color}`}>
+          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border shrink-0 ${level.color}`}>
             {level.title}
           </span>
         </div>
@@ -81,58 +81,58 @@ export const GrowthScoreCard: React.FC = () => {
 
         {/* Dynamic Feature Checkpoints */}
         <div className="space-y-2 pt-3 border-t border-slate-100 text-xs">
-          <div className="flex items-center justify-between text-slate-700">
-            <span className="flex items-center gap-2">
+          <div className="flex items-center justify-between text-slate-700 gap-2">
+            <span className="flex items-center gap-2 min-w-0 pr-1">
               <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span>Shopify Store & Catalog Synced (+20 pts)</span>
+              <span className="truncate">Shopify Store Synced (+20 pts)</span>
             </span>
-            <span className="text-[11px] font-semibold text-emerald-600">Active</span>
+            <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-600 shrink-0">Active</span>
           </div>
 
-          <div className="flex items-center justify-between text-slate-700">
-            <span className="flex items-center gap-2">
+          <div className="flex items-center justify-between text-slate-700 gap-2">
+            <span className="flex items-center gap-2 min-w-0 pr-1">
               <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span>Welcome Perk & Tracking Alerts (+20 pts)</span>
+              <span className="truncate">Welcome & Alerts (+20 pts)</span>
             </span>
-            <span className="text-[11px] font-semibold text-emerald-600">Active</span>
+            <span className="text-[10px] sm:text-[11px] font-semibold text-emerald-600 shrink-0">Active</span>
           </div>
 
-          <div className="flex items-center justify-between text-slate-700">
-            <span className="flex items-center gap-2">
+          <div className="flex items-center justify-between text-slate-700 gap-2">
+            <span className="flex items-center gap-2 min-w-0 pr-1">
               <CheckCircle2 className={`w-4 h-4 shrink-0 ${isCartActive ? 'text-emerald-500' : 'text-slate-300'}`} />
-              <span>WhatsApp Cart Recovery (+25 pts)</span>
+              <span className="truncate">Cart Recovery (+25 pts)</span>
             </span>
-            <span className={`text-[11px] font-semibold ${isCartActive ? 'text-emerald-600' : 'text-slate-400'}`}>
+            <span className={`text-[10px] sm:text-[11px] font-semibold shrink-0 ${isCartActive ? 'text-emerald-600' : 'text-slate-400'}`}>
               {isCartActive ? 'Active' : 'Recommended'}
             </span>
           </div>
 
-          <div className="flex items-center justify-between text-slate-700">
-            <span className="flex items-center gap-2">
+          <div className="flex items-center justify-between text-slate-700 gap-2">
+            <span className="flex items-center gap-2 min-w-0 pr-1">
               <CheckCircle2 className={`w-4 h-4 shrink-0 ${isChatbotActive ? 'text-emerald-500' : 'text-slate-300'}`} />
-              <span>24/7 AI Skincare Assistant (+15 pts)</span>
+              <span className="truncate">AI Skincare Assistant (+15 pts)</span>
             </span>
-            <span className={`text-[11px] font-semibold ${isChatbotActive ? 'text-emerald-600' : 'text-slate-400'}`}>
+            <span className={`text-[10px] sm:text-[11px] font-semibold shrink-0 ${isChatbotActive ? 'text-emerald-600' : 'text-slate-400'}`}>
               {isChatbotActive ? 'Active' : 'Recommended'}
             </span>
           </div>
 
-          <div className="flex items-center justify-between text-slate-700">
-            <span className="flex items-center gap-2">
+          <div className="flex items-center justify-between text-slate-700 gap-2">
+            <span className="flex items-center gap-2 min-w-0 pr-1">
               <CheckCircle2 className={`w-4 h-4 shrink-0 ${isRestockActive ? 'text-emerald-500' : 'text-slate-300'}`} />
-              <span>Bottle Restock Reminders (+10 pts)</span>
+              <span className="truncate">Bottle Restock (+10 pts)</span>
             </span>
-            <span className={`text-[11px] font-semibold ${isRestockActive ? 'text-emerald-600' : 'text-slate-400'}`}>
+            <span className={`text-[10px] sm:text-[11px] font-semibold shrink-0 ${isRestockActive ? 'text-emerald-600' : 'text-slate-400'}`}>
               {isRestockActive ? 'Active' : 'Recommended'}
             </span>
           </div>
 
-          <div className="flex items-center justify-between text-slate-700">
-            <span className="flex items-center gap-2">
+          <div className="flex items-center justify-between text-slate-700 gap-2">
+            <span className="flex items-center gap-2 min-w-0 pr-1">
               <CheckCircle2 className={`w-4 h-4 shrink-0 ${isReviewActive ? 'text-emerald-500' : 'text-slate-300'}`} />
-              <span>Post-Delivery Routine & Reviews (+10 pts)</span>
+              <span className="truncate">Routine & Reviews (+10 pts)</span>
             </span>
-            <span className={`text-[11px] font-semibold ${isReviewActive ? 'text-emerald-600' : 'text-slate-400'}`}>
+            <span className={`text-[10px] sm:text-[11px] font-semibold shrink-0 ${isReviewActive ? 'text-emerald-600' : 'text-slate-400'}`}>
               {isReviewActive ? 'Active' : 'Recommended'}
             </span>
           </div>

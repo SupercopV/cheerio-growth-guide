@@ -9,6 +9,7 @@ interface Step2Props {
 }
 
 export const Step2ConfigureMessage: React.FC<Step2Props> = ({ config, updateConfig }) => {
+  const [mobileTab, setMobileTab] = React.useState<'edit' | 'preview'>('edit');
   const templates = [
     {
       id: 'template_gentle',
@@ -37,7 +38,7 @@ export const Step2ConfigureMessage: React.FC<Step2Props> = ({ config, updateConf
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
         <h3 className="text-base sm:text-lg font-bold text-slate-900 font-display">
           Step 2: Customize Your WhatsApp Message
@@ -47,9 +48,36 @@ export const Step2ConfigureMessage: React.FC<Step2Props> = ({ config, updateConf
         </p>
       </div>
 
+      {/* Mobile / Tablet Segmented Tab (< lg) */}
+      <div className="flex lg:hidden items-center p-1 bg-slate-100 rounded-xl border border-slate-200">
+        <button
+          type="button"
+          onClick={() => setMobileTab('edit')}
+          className={`flex-1 py-1.5 px-3 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
+            mobileTab === 'edit'
+              ? 'bg-white text-slate-900 shadow-xs'
+              : 'text-slate-600 hover:text-slate-900'
+          }`}
+        >
+          <span>✏️ Edit Message</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileTab('preview')}
+          className={`flex-1 py-1.5 px-3 text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 ${
+            mobileTab === 'preview'
+              ? 'bg-white text-slate-900 shadow-xs'
+              : 'text-slate-600 hover:text-slate-900'
+          }`}
+        >
+          <Eye className="w-3.5 h-3.5 text-emerald-600" />
+          <span>Live Phone Preview</span>
+        </button>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Form Controls (7 cols) */}
-        <div className="lg:col-span-7 space-y-4">
+        <div className={`lg:col-span-7 space-y-4 ${mobileTab === 'edit' ? 'block' : 'hidden lg:block'}`}>
           {/* Template Selector */}
           <div>
             <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
@@ -173,7 +201,7 @@ export const Step2ConfigureMessage: React.FC<Step2Props> = ({ config, updateConf
         </div>
 
         {/* Right Phone Mockup Preview (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col items-center justify-center bg-slate-100/60 p-4 rounded-2xl border border-slate-200/80">
+        <div className={`lg:col-span-5 flex-col items-center justify-center bg-slate-100/60 p-4 rounded-2xl border border-slate-200/80 ${mobileTab === 'preview' ? 'flex' : 'hidden lg:flex'}`}>
           <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700 mb-2">
             <Eye className="w-3.5 h-3.5 text-emerald-600" />
             Live Customer WhatsApp Preview

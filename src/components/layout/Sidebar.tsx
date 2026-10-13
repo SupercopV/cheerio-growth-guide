@@ -12,7 +12,8 @@ import {
   ChevronRight,
   HelpCircle,
   ExternalLink,
-  MessageSquare
+  MessageSquare,
+  X
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { NavigationTab } from '../../types/growth';
@@ -83,19 +84,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, setMobileOpen }) =
       {/* Mobile backdrop */}
       {mobileOpen && (
         <div 
-          className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-40 lg:hidden"
+          className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-40 lg:hidden transition-opacity"
           onClick={() => setMobileOpen(false)}
+          aria-label="Close navigation overlay"
         />
       )}
 
       <aside className={`
-        fixed top-0 bottom-0 left-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col justify-between
+        fixed top-0 bottom-0 left-0 z-50 w-64 bg-white border-r border-slate-200 flex flex-col justify-between
         transition-transform duration-200 ease-in-out
-        ${mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        ${mobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0'}
       `}>
         {/* Top Header / Brand Logo */}
-        <div>
-          <div className="h-16 flex items-center justify-between px-5 border-b border-slate-100">
+        <div className="flex-1 overflow-y-auto min-h-0">
+          <div className="h-16 flex items-center justify-between px-5 border-b border-slate-100 sticky top-0 bg-white z-10">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold shadow-xs">
                 <span className="text-base tracking-tighter">C</span>
@@ -110,6 +112,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, setMobileOpen }) =
                 <p className="text-[11px] text-slate-400 font-medium">Marketing Platform</p>
               </div>
             </div>
+
+            {/* Mobile Close Button */}
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              className="lg:hidden p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition-colors"
+              aria-label="Close sidebar navigation"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Connected Store Switcher / Identity */}
@@ -178,7 +190,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, setMobileOpen }) =
         </div>
 
         {/* WhatsApp Channel Status Footer */}
-        <div className="p-3 border-t border-slate-100 space-y-3">
+        <div className="shrink-0 bg-white p-3 border-t border-slate-100 space-y-3">
           <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
             <div className="flex items-center justify-between mb-1">
               <span className="text-[11px] font-bold text-slate-700 flex items-center gap-1.5">

@@ -74,7 +74,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
         </div>
       )}
 
-      <div className="p-5 sm:p-6 flex-1">
+      <div className="p-4 sm:p-6 flex-1">
         {/* Header / Badges / Dismiss */}
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-center gap-2.5">
@@ -225,7 +225,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
       </div>
 
       {/* Card Action Button Footer */}
-      <div className="p-5 sm:p-6 pt-0 border-t border-slate-100/80 mt-2">
+      <div className="p-4 sm:p-6 pt-0 border-t border-slate-100/80 mt-2">
         {isLive ? (
           <div className="flex items-center justify-between gap-3 pt-3">
             <span className="text-xs font-semibold text-emerald-700 flex items-center gap-1.5">

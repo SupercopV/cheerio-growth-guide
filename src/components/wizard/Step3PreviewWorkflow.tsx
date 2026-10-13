@@ -85,7 +85,7 @@ export const Step3PreviewWorkflow: React.FC<Step3Props> = ({ config }) => {
       </div>
 
       {/* Visual Workflow Canvas */}
-      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 relative overflow-hidden">
+      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 sm:p-6 relative overflow-hidden">
         <div className="max-w-xl mx-auto space-y-3">
           {nodes.map((node, index) => {
             const Icon = node.icon;
@@ -96,28 +96,28 @@ export const Step3PreviewWorkflow: React.FC<Step3Props> = ({ config }) => {
                 <div
                   onClick={() => setSelectedNode(node.id)}
                   className={`
-                    p-4 rounded-xl border bg-white cursor-pointer transition-all flex items-start gap-3.5 shadow-2xs
+                    p-3.5 sm:p-4 rounded-xl border bg-white cursor-pointer transition-all flex items-start gap-3 sm:gap-3.5 shadow-2xs
                     ${isSelected 
                       ? 'ring-2 ring-emerald-500 border-emerald-500 shadow-sm' 
                       : 'hover:border-slate-300'
                     }
                   `}
                 >
-                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5 border ${node.color}`}>
-                    <Icon className="w-5 h-5" />
+                  <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5 border ${node.color}`}>
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-between gap-1.5 sm:gap-2 flex-wrap mb-1">
+                      <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="text-xs font-bold text-slate-900">{node.title}</span>
                         <span className="text-[10px] text-slate-500 font-medium">({node.subtitle})</span>
                       </div>
-                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                      <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 shrink-0">
                         {node.badge}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-600">{node.description}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed">{node.description}</p>
                   </div>
                 </div>
 

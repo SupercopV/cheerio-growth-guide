@@ -159,25 +159,25 @@ export const Step4TestAutomation: React.FC<Step4Props> = ({ config, updateConfig
               </div>
 
               {!simulatedConversion ? (
-                <div className="flex items-center justify-between gap-3 pt-2 border-t border-slate-700/60">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-2 border-t border-slate-700/60">
                   <span className="text-slate-400 text-[11px]">
                     Simulate customer tapping "Complete My Order"
                   </span>
                   <button
                     type="button"
                     onClick={() => setSimulatedConversion(true)}
-                    className="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs transition-colors"
+                    className="w-full sm:w-auto px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs transition-colors text-center"
                   >
                     Simulate Customer Checkout 🛍️
                   </button>
                 </div>
               ) : (
-                <div className="p-3 bg-emerald-950/60 border border-emerald-500/40 rounded-lg text-emerald-300 flex items-center justify-between">
-                  <span className="font-bold flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <div className="p-3 bg-emerald-950/60 border border-emerald-500/40 rounded-lg text-emerald-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <span className="font-bold flex items-center gap-1.5 text-xs">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                     Success! Order #GB-8921 placed (₹2,450 recovered)
                   </span>
-                  <span className="text-[10px] bg-emerald-500/20 text-emerald-200 px-2 py-0.5 rounded-sm">
+                  <span className="text-[10px] bg-emerald-500/20 text-emerald-200 px-2 py-0.5 rounded-sm self-start sm:self-auto">
                     Goal Reached
                   </span>
                 </div>
@@ -185,9 +185,9 @@ export const Step4TestAutomation: React.FC<Step4Props> = ({ config, updateConfig
             </div>
           )}
 
-          <div className="text-xs text-slate-300 bg-slate-800/40 p-3 rounded-lg border border-slate-800 flex items-center justify-between">
+          <div className="text-xs text-slate-300 bg-slate-800/40 p-3 rounded-lg border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <span>✅ Verification checklist complete. Everything is ready for activation!</span>
-            <span className="text-emerald-400 font-bold text-xs">Proceed to Step 5 ➔</span>
+            <span className="text-emerald-400 font-bold text-xs shrink-0">Proceed to Step 5 ➔</span>
           </div>
         </div>
       )}
