@@ -139,7 +139,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ searchQuery }) => 
             </div>
 
             <div className="text-xs text-slate-500 font-medium shrink-0 hidden sm:block">
-              Personalized for D2C Skincare
+              Personalized for D2C Skincare • Illustrative Demo
             </div>
           </div>
 
@@ -165,7 +165,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ searchQuery }) => 
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 <span className="text-[11px] font-bold text-emerald-300 uppercase tracking-wider">
-                  D2C Skincare Benchmark
+                  D2C Skincare Benchmark (Demo Simulation)
                 </span>
               </div>
 
@@ -181,6 +181,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ searchQuery }) => 
                 <span className="text-emerald-300 font-semibold">Average recovery turnaround:</span>
                 <span className="font-bold text-white">18 mins</span>
               </div>
+              <p className="text-[10px] text-emerald-400/80 pt-0.5">
+                *Illustrative benchmark based on simulated skincare store metrics.
+              </p>
             </div>
           </div>
 

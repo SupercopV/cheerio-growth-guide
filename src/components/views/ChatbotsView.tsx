@@ -72,7 +72,7 @@ export const ChatbotsView: React.FC = () => {
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-0.5">
-            Trained on your GlowBotanics product catalog and Shopify inventory. Resolves 78% of customer queries instantly.
+            Trained on your GlowBotanics product catalog and Shopify inventory. Resolves ~78% of routine customer queries instantly (Illustrative Demo Benchmark).
           </p>
         </div>
 

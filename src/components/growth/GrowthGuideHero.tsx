@@ -14,14 +14,17 @@ export const GrowthGuideHero: React.FC = () => {
       <div className="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10">
-        {/* Top Tagline */}
+        {/* Top Tagline with Demo Data Indicator */}
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            AI Growth Intelligence for GlowBotanics
+            AI Growth Intelligence • GlowBotanics
+          </span>
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100/80 text-amber-900 border border-amber-200">
+            Illustrative Demo Data
           </span>
           <span className="text-xs font-medium text-slate-500">
-            Updated today based on your Shopify store metrics
+            Sample D2C skincare store model
           </span>
         </div>
 
@@ -29,34 +32,49 @@ export const GrowthGuideHero: React.FC = () => {
         <div className="max-w-3xl">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
             Unlock ~₹3.8L in Monthly Unclaimed Revenue
+            <span className="block sm:inline text-xs sm:text-sm font-semibold text-slate-500 sm:ml-2">
+              (Illustrative Demo Estimate)
+            </span>
           </h2>
           <p className="mt-2.5 text-sm sm:text-base text-slate-600 leading-relaxed">
-            Welcome back, Ananya! In the last 30 days, <strong className="text-slate-900">3,420 shoppers</strong> added serums and cleansers to their GlowBotanics cart but dropped off before paying. We hand-picked 3 proven Cheerio marketing automations to recover those lost sales on WhatsApp with zero technical setup.
+            Welcome back, Ananya! In the last 30 days, <strong className="text-slate-900">3,420 shoppers</strong> added serums and cleansers to their GlowBotanics cart but dropped off before paying. We hand-picked proven Cheerio marketing automations to recover those lost sales on WhatsApp with zero technical setup.
           </p>
         </div>
 
-        {/* Quick Snapshot Metrics Grid */}
+        {/* Quick Snapshot Metrics Grid with Clear Demo Labels */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-6 pt-6 border-t border-slate-200/60">
           <div className="bg-white/80 backdrop-blur-xs p-3.5 rounded-xl border border-slate-200/80">
-            <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Unrecovered Carts</div>
+            <div className="flex items-center justify-between text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+              <span>Unrecovered Carts</span>
+              <span className="text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded-xs text-[9px] font-bold">Demo</span>
+            </div>
             <div className="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">3,420</div>
-            <div className="text-[11px] text-rose-600 font-medium mt-0.5">₹14.8L potential GMV</div>
+            <div className="text-[11px] text-rose-600 font-medium mt-0.5">₹14.8L illustrative GMV</div>
           </div>
 
           <div className="bg-white/80 backdrop-blur-xs p-3.5 rounded-xl border border-slate-200/80">
-            <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Cart Drop-off Rate</div>
+            <div className="flex items-center justify-between text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+              <span>Cart Drop-off Rate</span>
+              <span className="text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded-xs text-[9px] font-bold">Demo</span>
+            </div>
             <div className="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">71.4%</div>
-            <div className="text-[11px] text-amber-600 font-medium mt-0.5">D2C Industry avg: 69%</div>
+            <div className="text-[11px] text-amber-700 font-medium mt-0.5">D2C Industry avg: ~69%</div>
           </div>
 
           <div className="bg-white/80 backdrop-blur-xs p-3.5 rounded-xl border border-slate-200/80">
-            <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">WhatsApp Read Rate</div>
+            <div className="flex items-center justify-between text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+              <span>WhatsApp Read Rate</span>
+              <span className="text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded-xs text-[9px] font-bold">Benchmark</span>
+            </div>
             <div className="text-lg sm:text-xl font-bold text-emerald-700 mt-0.5">94.2%</div>
             <div className="text-[11px] text-emerald-600 font-medium mt-0.5">vs 19% on email</div>
           </div>
 
           <div className="bg-white/80 backdrop-blur-xs p-3.5 rounded-xl border border-slate-200/80">
-            <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Average Order Value</div>
+            <div className="flex items-center justify-between text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
+              <span>Average Order Value</span>
+              <span className="text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded-xs text-[9px] font-bold">Demo</span>
+            </div>
             <div className="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">₹1,850</div>
             <div className="text-[11px] text-slate-500 font-medium mt-0.5">Clean beauty category</div>
           </div>
@@ -70,9 +88,14 @@ export const GrowthGuideHero: React.FC = () => {
                 <Zap className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h4 className="text-sm font-bold leading-tight">Top Recommendation: WhatsApp Abandoned-Cart Nudge</h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="text-sm font-bold leading-tight">Top Recommendation: Automatic WhatsApp Cart Recovery</h4>
+                  <span className="bg-emerald-700/80 text-emerald-100 text-[10px] px-2 py-0.5 rounded-md font-semibold">
+                    High Priority
+                  </span>
+                </div>
                 <p className="text-xs text-emerald-100 mt-0.5">
-                  Takes less than 3 minutes to launch. Automatically recovers ~22% of dropped skincare checkouts.
+                  Takes less than 3 minutes to launch. Automatically recovers ~22% of dropped skincare checkouts (Illustrative Demo Estimate).
                 </p>
               </div>
             </div>

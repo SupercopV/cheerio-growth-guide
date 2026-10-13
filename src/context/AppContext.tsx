@@ -10,7 +10,8 @@ import {
 import { 
   INITIAL_RECOMMENDATIONS, 
   INITIAL_AUTOMATIONS, 
-  INITIAL_WHATSAPP_STATE 
+  INITIAL_WHATSAPP_STATE,
+  REC_POINT_VALUES
 } from '../data/mockData';
 
 export interface ToastInfo {
@@ -81,10 +82,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     localStorage.setItem('cheerio_whatsapp', JSON.stringify(whatsappState));
   }, [whatsappState]);
 
-  // Compute dynamic Growth Score: (active features / total evaluated features) * 100
-  // Default starts around 45% and jumps to 70% when abandoned cart is activated!
-  const activeCount = recommendations.filter(r => r.status === 'active').length + automations.length;
-  const growthScore = Math.min(100, Math.round(35 + (activeCount * 18)));
+  // Compute dynamic Growth Score based on actual demo progress:
+  // Baseline (40 pts): Shopify store connected (20 pts) + 2 baseline transactional/welcome automations (20 pts)
+  // Each activated recommendation unlocks explicit incremental points:
+  // - WhatsApp Cart Recovery: +25 pts (Score: 65%)
+  // - AI Skincare Assistant: +15 pts (Score: 80%)
+  // - Timely Restock Reminders: +10 pts (Score: 90%)
+  // - Routine & Reviews: +10 pts (Score: 100%)
+  const baseStorePoints = 20; // Shopify store connected & product catalog synced
+  const activeBaseAutomations = automations.filter(a => a.status === 'active').length;
+  const baseAutomationPoints = Math.min(20, activeBaseAutomations * 10);
+  const baselineScore = baseStorePoints + baseAutomationPoints;
+
+  const activatedRecsPoints = recommendations
+    .filter(r => r.status === 'active')
+    .reduce((sum, r) => sum + (REC_POINT_VALUES[r.id] || 10), 0);
+
+  const growthScore = Math.min(100, baselineScore + activatedRecsPoints);
 
   const showToast = (toast: Omit<ToastInfo, 'id'>) => {
     const id = Date.now().toString();

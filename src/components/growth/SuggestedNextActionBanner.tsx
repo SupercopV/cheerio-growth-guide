@@ -25,7 +25,7 @@ export const SuggestedNextActionBanner: React.FC = () => {
               Pair your cart reminders with: {suggestedNextAction.title}
             </h4>
             <p className="text-xs text-slate-600 mt-0.5 max-w-2xl leading-relaxed">
-              When shoppers get their cart reminder, many ask: <em className="text-slate-800">"Is this good for oily skin?"</em> or <em className="text-slate-800">"What is the expiry date?"</em>. Activating the AI Chatbot answers their questions in 3 seconds so they complete checkout immediately.
+              When shoppers get their WhatsApp cart reminder, they often reply asking: <em className="text-slate-800">"Is this serum safe for sensitive acne-prone skin?"</em> or <em className="text-slate-800">"How fast is shipping?"</em>. Activating the 24/7 AI Skincare Assistant answers their questions in seconds so they complete checkout without hesitation.
             </p>
           </div>
         </div>
@@ -39,7 +39,7 @@ export const SuggestedNextActionBanner: React.FC = () => {
             }}
             className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
           >
-            <span>Set up {suggestedNextAction.title.split(' ')[0]}</span>
+            <span>Set up {suggestedNextAction.id === 'rec_ai_chatbot' ? 'AI Assistant' : 'Feature'}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
           <button

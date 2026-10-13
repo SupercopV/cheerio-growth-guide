@@ -163,12 +163,19 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
         </p>
 
         {/* ROI / Value Estimate Pill */}
-        <div className="my-3.5 p-3 rounded-xl bg-emerald-50/60 border border-emerald-100 flex items-center justify-between">
+        <div className="my-3.5 p-3 rounded-xl bg-emerald-50/60 border border-emerald-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-emerald-600" />
-            <span className="text-xs font-semibold text-slate-700">Estimated Business Lift</span>
+            <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+            <div>
+              <span className="text-xs font-semibold text-slate-700 block leading-tight">
+                Estimated Business Lift
+              </span>
+              <span className="text-[10px] text-slate-400 font-medium">
+                Illustrative Demo Metric
+              </span>
+            </div>
           </div>
-          <span className="text-xs font-extrabold text-emerald-800 bg-white px-2.5 py-1 rounded-md border border-emerald-200 shadow-2xs">
+          <span className="text-xs font-extrabold text-emerald-800 bg-white px-2.5 py-1 rounded-md border border-emerald-200 shadow-2xs self-start sm:self-auto">
             {recommendation.roiEstimate}
           </span>
         </div>
@@ -180,7 +187,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
 
         {/* Key Benefits List */}
         <div className="mt-3.5 space-y-1.5">
-          {recommendation.keyBenefits.slice(0, 3).map((benefit, idx) => (
+          {recommendation.keyBenefits.slice(0, 4).map((benefit, idx) => (
             <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
               <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
               <span>{benefit}</span>
@@ -207,8 +214,11 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommen
           </button>
 
           {expandedWhy && (
-            <div className="mt-2 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-600 leading-relaxed animate-fadeIn">
-              {recommendation.whyItMatters}
+            <div className="mt-2 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-600 leading-relaxed animate-fadeIn space-y-1.5">
+              <p>{recommendation.whyItMatters}</p>
+              <p className="text-[10px] text-slate-400 border-t border-slate-200/60 pt-1">
+                *Illustrative business impact based on simulated D2C skincare metrics.
+              </p>
             </div>
           )}
         </div>

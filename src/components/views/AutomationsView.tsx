@@ -32,9 +32,14 @@ export const AutomationsView: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
-            Automated Workflows
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
+              Automated Workflows
+            </h2>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+              Illustrative Demo Data
+            </span>
+          </div>
           <p className="text-xs text-slate-500 mt-0.5">
             Always-on WhatsApp automation triggers monitoring your GlowBotanics Shopify store 24/7.
           </p>

@@ -47,11 +47,16 @@ export const CrmView: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
-            Customer Segments & CRM
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
+              Customer Segments & CRM
+            </h2>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+              Illustrative Demo Data
+            </span>
+          </div>
           <p className="text-xs text-slate-500 mt-0.5">
-            Identify high-value skincare buyers and dropped carts synced live from Shopify.
+            Identify high-value skincare buyers and dropped carts synced from sample Shopify store.
           </p>
         </div>
 

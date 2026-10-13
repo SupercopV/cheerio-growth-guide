@@ -1,21 +1,40 @@
 import React from 'react';
-import { Award, TrendingUp, CheckCircle2, ChevronRight, Zap } from 'lucide-react';
+import { Award, TrendingUp, CheckCircle2, ChevronRight, Zap, Sparkles, Check } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { REC_POINT_VALUES } from '../../data/mockData';
 
 export const GrowthScoreCard: React.FC = () => {
   const { growthScore, recommendations, automations, openWizard } = useApp();
 
-  const activeRecCount = recommendations.filter(r => r.status === 'active').length;
   const uncompletedRecs = recommendations.filter(r => r.status === 'recommended');
 
   const getScoreLevel = () => {
-    if (growthScore >= 85) return { title: 'Hyper-Optimized Growth', desc: 'Your store is maximizing automated retention & revenue recovery.', color: 'text-emerald-700 bg-emerald-100' };
-    if (growthScore >= 60) return { title: 'Growth Engine Active', desc: 'Core automations are actively recovering abandoned sales.', color: 'text-emerald-600 bg-emerald-50' };
-    return { title: 'Early Discovery Stage', desc: 'High-value customer recovery opportunities are waiting to be turned on.', color: 'text-amber-700 bg-amber-50' };
+    if (growthScore >= 85) return { 
+      title: 'Hyper-Optimized Growth', 
+      desc: 'Outstanding! GlowBotanics is running advanced automated retention, customer service, and revenue recovery 24/7.', 
+      color: 'text-emerald-800 bg-emerald-100 border-emerald-300' 
+    };
+    if (growthScore >= 60) return { 
+      title: 'Growth Engine Active', 
+      desc: 'Great progress! Core automations are actively recovering abandoned carts and engaging shoppers.', 
+      color: 'text-emerald-700 bg-emerald-50 border-emerald-200' 
+    };
+    return { 
+      title: 'Early Discovery Stage', 
+      desc: 'Shopify is connected. Turn on automated WhatsApp cart recovery and AI support to boost customer retention.', 
+      color: 'text-amber-800 bg-amber-50 border-amber-200' 
+    };
   };
 
   const level = getScoreLevel();
   const nextRec = uncompletedRecs[0];
+  const nextRecPoints = nextRec ? (REC_POINT_VALUES[nextRec.id] || 10) : 0;
+
+  // Check individual recommendation status
+  const isCartActive = recommendations.find(r => r.id === 'rec_abandoned_cart')?.status === 'active';
+  const isChatbotActive = recommendations.find(r => r.id === 'rec_ai_chatbot')?.status === 'active';
+  const isRestockActive = recommendations.find(r => r.id === 'rec_campaign_analytics')?.status === 'active';
+  const isReviewActive = recommendations.find(r => r.id === 'rec_post_purchase_review')?.status === 'active';
 
   return (
     <div className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col justify-between">
@@ -27,10 +46,10 @@ export const GrowthScoreCard: React.FC = () => {
             </div>
             <div>
               <h3 className="text-sm font-bold text-slate-900 leading-tight">Growth Readiness Score</h3>
-              <p className="text-[11px] text-slate-500">Based on active Cheerio features</p>
+              <p className="text-[11px] text-slate-500">Live demo progress tracker</p>
             </div>
           </div>
-          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border border-current ${level.color}`}>
+          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${level.color}`}>
             {level.title}
           </span>
         </div>
@@ -44,7 +63,7 @@ export const GrowthScoreCard: React.FC = () => {
             </div>
             <div className="text-xs font-semibold text-emerald-700 flex items-center gap-1">
               <TrendingUp className="w-3.5 h-3.5" />
-              <span>{automations.length} Workflows Live</span>
+              <span>{automations.length} Flows Configured</span>
             </div>
           </div>
 
@@ -60,55 +79,100 @@ export const GrowthScoreCard: React.FC = () => {
           {level.desc}
         </p>
 
-        {/* Feature Checkpoints */}
+        {/* Dynamic Feature Checkpoints */}
         <div className="space-y-2 pt-3 border-t border-slate-100 text-xs">
           <div className="flex items-center justify-between text-slate-700">
             <span className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-              <span>Shopify Store & Webhook Synced</span>
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span>Shopify Store & Catalog Synced (+20 pts)</span>
             </span>
             <span className="text-[11px] font-semibold text-emerald-600">Active</span>
           </div>
 
           <div className="flex items-center justify-between text-slate-700">
             <span className="flex items-center gap-2">
-              <CheckCircle2 className={`w-4 h-4 ${activeRecCount > 0 ? 'text-emerald-500' : 'text-slate-300'}`} />
-              <span>WhatsApp Abandoned Cart Flow</span>
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span>Welcome Perk & Tracking Alerts (+20 pts)</span>
             </span>
-            <span className={`text-[11px] font-semibold ${activeRecCount > 0 ? 'text-emerald-600' : 'text-slate-400'}`}>
-              {activeRecCount > 0 ? 'Active' : 'Recommended'}
+            <span className="text-[11px] font-semibold text-emerald-600">Active</span>
+          </div>
+
+          <div className="flex items-center justify-between text-slate-700">
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className={`w-4 h-4 shrink-0 ${isCartActive ? 'text-emerald-500' : 'text-slate-300'}`} />
+              <span>WhatsApp Cart Recovery (+25 pts)</span>
+            </span>
+            <span className={`text-[11px] font-semibold ${isCartActive ? 'text-emerald-600' : 'text-slate-400'}`}>
+              {isCartActive ? 'Active' : 'Recommended'}
             </span>
           </div>
 
           <div className="flex items-center justify-between text-slate-700">
             <span className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-              <span>Welcome Perk Series</span>
+              <CheckCircle2 className={`w-4 h-4 shrink-0 ${isChatbotActive ? 'text-emerald-500' : 'text-slate-300'}`} />
+              <span>24/7 AI Skincare Assistant (+15 pts)</span>
             </span>
-            <span className="text-[11px] font-semibold text-emerald-600">Active</span>
+            <span className={`text-[11px] font-semibold ${isChatbotActive ? 'text-emerald-600' : 'text-slate-400'}`}>
+              {isChatbotActive ? 'Active' : 'Recommended'}
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between text-slate-700">
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className={`w-4 h-4 shrink-0 ${isRestockActive ? 'text-emerald-500' : 'text-slate-300'}`} />
+              <span>Bottle Restock Reminders (+10 pts)</span>
+            </span>
+            <span className={`text-[11px] font-semibold ${isRestockActive ? 'text-emerald-600' : 'text-slate-400'}`}>
+              {isRestockActive ? 'Active' : 'Recommended'}
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between text-slate-700">
+            <span className="flex items-center gap-2">
+              <CheckCircle2 className={`w-4 h-4 shrink-0 ${isReviewActive ? 'text-emerald-500' : 'text-slate-300'}`} />
+              <span>Post-Delivery Routine & Reviews (+10 pts)</span>
+            </span>
+            <span className={`text-[11px] font-semibold ${isReviewActive ? 'text-emerald-600' : 'text-slate-400'}`}>
+              {isReviewActive ? 'Active' : 'Recommended'}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Next Best Action Suggestion */}
-      {nextRec && (
+      {/* Next Best Action Suggestion / Celebration */}
+      {nextRec ? (
         <div className="mt-5 p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-3">
           <div className="min-w-0">
             <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-800">
               <Zap className="w-3 h-3 text-emerald-600" />
-              Next Unlock (+18 pts)
+              <span>Next Unlock (+{nextRecPoints} pts)</span>
             </div>
             <p className="text-[11px] text-slate-500 truncate">{nextRec.title}</p>
           </div>
           <button
             type="button"
             onClick={() => openWizard(nextRec.id)}
-            className="px-2.5 py-1.5 text-[11px] font-bold text-emerald-700 bg-white border border-emerald-200 hover:bg-emerald-50 rounded-lg transition-colors shrink-0"
+            className="px-2.5 py-1.5 text-[11px] font-bold text-emerald-700 bg-white border border-emerald-200 hover:bg-emerald-50 rounded-lg transition-colors shrink-0 shadow-2xs"
           >
-            Launch
+            Set up now
           </button>
         </div>
+      ) : (
+        <div className="mt-5 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-center">
+          <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-900">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Growth Engine 100% Complete!</span>
+          </div>
+          <p className="text-[10px] text-emerald-700 mt-0.5">
+            All 4 recommended automations are active and protecting your store.
+          </p>
+        </div>
       )}
+
+      {/* Illustrative demo data footnote */}
+      <div className="mt-3 pt-2 text-[10px] text-slate-400 text-center border-t border-slate-100">
+        Demo score reflects simulated setup actions in this prototype.
+      </div>
     </div>
   );
 };
